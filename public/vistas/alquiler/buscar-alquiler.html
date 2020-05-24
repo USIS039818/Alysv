@@ -1,0 +1,53 @@
+<form method="post" id="frm-buscar-alquiler">
+    <div class="card text-white bg-success mb-3" style="max-width: 48rem;">
+        <div class="card-header">
+            BUSQUEDA DE HABITATS
+
+            <button type="button" id="btn-close-buscar-alquiler" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <table id="tbl-buscar-clientes" class="table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="5">
+                            <input type="text" v-model="valor" v-on:keyup="buscarAlquiler" placeholder="ID Animal, Direccion o Lugar" class="form-control">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>ID ANIMAL</th>
+                        <th> </th>
+                        <th>ID ESPECIE</th>
+                        <th> </th>
+                        <th>NOMBRE</th>
+                        <th> </th>
+                        <th>DESCRIPCION</th>
+                        <th> </th>
+                        <th>DIRECCION O LUGAR</th>
+                        <th> </th>  
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_alquiler in mis_alquileres" :key="mi_alquiler.idCliente" v-on:click="modificarAlquiler(mi_alquiler)" >
+                     <td>{{ mi_alquiler.idCliente }}</td>
+                     <td>&nbsp</td>
+                     <td>{{ mi_alquiler.idPelicula }}</td>
+                     <td>&nbsp</td>
+                     <td>{{ mi_alquiler.fechaPrestamo }}</td>
+                     <td>&nbsp</td>
+                     <td>{{ mi_alquiler.fechaDevolucion }}</td>
+                     <td>&nbsp</td>
+                     <td>{{ mi_alquiler.valor }}</td>
+                     <td>&nbsp</td>
+                     <td>
+                        <input v-on:click="eliminarAlquiler(mi_alquiler.idAlquiler)" type="button" class="btn btn-danger text-white" value="Eliminar">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</form>
+<script src="public/vistas/alquiler/buscar-alquiler.js"></script>

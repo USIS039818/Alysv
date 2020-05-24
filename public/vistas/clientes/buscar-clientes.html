@@ -1,0 +1,49 @@
+<form method="post" id="frm-buscar-clientes">
+    <div class="card text-white bg-success mb-3" style="max-width: 50rem;">
+        <div class="card-header">
+            BUSQUEDA DE ESPECIES
+
+            <button type="button" id="btn-close-buscar-clientes" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <table id="tbl-buscar-clientes" class="table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="5">
+                            <input type="text" v-model="valor" v-on:keyup="buscarClientes" placeholder="Tipo o nombre" class="form-control">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th> </th>
+                        <th>CARACTERISTICAS</th>
+                        <th> </th>
+                        <th>CLASIFICACION</th> 
+                        <th> </th>
+                        <th>TIPOS</th>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_cliente in mis_clientes" :key="mi_cliente.idCliente" v-on:click="modificarCliente(mi_cliente)" >
+                        <td>{{ mi_cliente.nombre }}</td>
+                        <td>&nbsp</td>
+                        <td>{{ mi_cliente.direccion }}</td>
+                        <td>&nbsp</td>
+                        <td>{{ mi_cliente.telefono }}</td>
+                        <td>&nbsp</td>
+                        <td>{{ mi_cliente.dui }}</td>
+                        <td>&nbsp</td>
+                        <td>
+                            <input v-on:click="eliminarCliente(mi_cliente.idCliente)" type="button" class="btn btn-danger text-white" value="Eliminar">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/clientes/buscar-clientes.js"></script>
